@@ -1,7 +1,7 @@
 # Learn With Pluralsight: [Java 8 Fundamentals: The Java Reflection API Method Handles][course]
 
-1. **Course Overview** [[GITHUB][m1.gh]]
-2. Introducing Java Reflection [[GITHUB][m2.gh]|[NOTE][m2.gh.note]]
+1. Course Overview [[GITHUB][m1.gh]]
+2. **Introducing Java Reflection** [[GITHUB][m2.gh]|[NOTE][m2.gh.note]]
 3. Creating an Object Metamodel Using Annotations and Reflection
 4. Creating an Object Relational Mapper Using an Object Metamodel
 5. Injecting Dependencies in an Object Using an Object Metamodel
