@@ -1,4 +1,4 @@
-## 2. Introducing Java Reflection
+# 2. Introducing Java Reflection
 
 - Reflection API introduced in Java 1
 - Method Handles introduced in Java 7
@@ -15,7 +15,7 @@ Why is this API so important?
 - JAX-RS, JAX-WS
 - JUnit, TestNG, Mockito, ACID J, ...
 
-### Introducing the Java Reflection API: Class, Field, and Method
+## Introducing the Java Reflection API: Class, Field, and Method
 
 several classes that provide a model for each fundamental part of a class:
 
@@ -25,14 +25,14 @@ several classes that provide a model for each fundamental part of a class:
 - `Constructor`
 - `Annotation`
 
-### The Class Named Class
+## The Class Named Class
 
 - cannot create a class instance, but you can get one by
 - querying an existing object for its class: _`<object>`_`.getclass()`
 - you can get a class by its name, known at compile time: _`<ClassName>`_`.class`
 - you can get a class by its name, known at runtime: `Class.forName(`_`"className"`_`)`
 
-### Getting a Class Instance
+## Getting a Class Instance
 
 ```java
 public class Main {
@@ -83,7 +83,7 @@ public class Main {
   - security-related exceptions (trying to access a class w/o permissions)
   - name-related exception (no class w/ that name)
 
-### Getting the Super Class and the Implemented Interfaces of a Class
+## Getting the Super Class and the Implemented Interfaces of a Class
 
 - from the Class object, we can:
   - get the super classes
@@ -102,7 +102,7 @@ public class Main {
 }
 ```
 
-### Getting the Fields of a Class
+## Getting the Fields of a Class
 
 methods in class, methods to get references on the:
 
@@ -155,7 +155,7 @@ public class Main {
 }  
 ```
 
-### Getting the Methods and the Constructors of a Class
+## Getting the Methods and the Constructors of a Class
 
 ```java
 import java.lang.reflect.Constructor;
@@ -178,7 +178,7 @@ public class Main {
 }
 ```
 
-### Reading The Modifier to Tell if a Class Member is Public
+## Reading The Modifier to Tell if a Class Member is Public
 
 the modifiers tell if a field/method is
 
