@@ -5,7 +5,7 @@
 3. Creating an Object Metamodel Using Annotations and Reflection [[GITHUB][m3.gh]]
 4. Creating an Object Relational Mapper Using an Object Metamodel [[GITHUB][m4.gh]]
 5. Injecting Dependencies in an Object Using an Object Metamodel [[GITHUB][m5.gh]]
-6. Improving Performance Using Method Handles
+6. Improving Performance Using Method Handles [[GITHUB][m6.gh]]
 
 [course]: https://app.pluralsight.com/library/courses/java-fundamentals-reflection-api-method-handles
 [m1.gh]: https://github.com/reinielfc/lrn-ps-java8-reflection-api-method-handles/tree/main
