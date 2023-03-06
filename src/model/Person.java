@@ -5,11 +5,11 @@ import annotation.PrimaryKey;
 
 public class Person {
 
-    @PrimaryKey
+    @PrimaryKey(name = "k_id")
     private long id;
-    @Column
+    @Column(name = "c_name")
     private String name;
-    @Column
+    @Column(name = "c_age")
     private int age;
 
     public Person() {
@@ -50,6 +50,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{id=%d, name='%s', age=%d}".formatted(id, name, age);
+        return String.format("Person{id=%d, name='%s', age=%d}", id, name, age);
     }
 }
