@@ -1,13 +1,16 @@
 
+import beanmanager.BeanManager;
 import model.Person;
 import orm.EntityManager;
+import orm.ManagedEntityManager;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class ReadingObjects {
     public static void main(String[] args) throws Exception {
-        EntityManager<Person> em = EntityManager.of(Person.class);
+        BeanManager beanManager = BeanManager.getInstance();
+        EntityManager<Person> em = beanManager.getInstance(ManagedEntityManager.class);
 
         Person linda = em.find(Person.class, 1L);
         Person james = em.find(Person.class, 2L);

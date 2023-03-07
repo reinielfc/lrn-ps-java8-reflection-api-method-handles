@@ -1,31 +1,40 @@
 package orm;
 
+import annotation.Inject;
 import util.ColumnField;
 import util.Metamodel;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
-public abstract class AbstractEntityManager<T> implements EntityManager<T> {
+public class ManagedEntityManager<T> implements EntityManager<T> {
     private final AtomicLong idGenerator = new AtomicLong(0L);
+    @Inject
+    private Connection connection;
 
     @Override
     public void persist(T t) throws SQLException, IllegalAccessException {
         Metamodel metamodel = Metamodel.of(t.getClass());
         String sql = metamodel.buildInsertRequest();
-        PreparedStatement statement = prepareStatementWith(sql).andParameters(t);
-        statement.executeUpdate();
+        try (PreparedStatement statement = prepareStatementWith(sql).andParameters(t)) {
+            statement.executeUpdate();
+        }
     }
 
     @Override
     public T find(Class<T> tClass, Object primaryKey) throws SQLException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         Metamodel metamodel = Metamodel.of(tClass);
         String sql = metamodel.buildSelectRequest();
-        PreparedStatement statement = prepareStatementWith(sql).andPrimaryKey(primaryKey);
-        ResultSet resultSet = statement.executeQuery();
+        ResultSet resultSet;
+        try (PreparedStatement statement = prepareStatementWith(sql).andPrimaryKey(primaryKey)) {
+            resultSet = statement.executeQuery();
+        }
         return buildInstanceFrom(tClass, resultSet);
     }
 
@@ -66,12 +75,10 @@ public abstract class AbstractEntityManager<T> implements EntityManager<T> {
     }
 
     private PreparedStatementWrapper prepareStatementWith(String sql) throws SQLException {
-        Connection connection = buildConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         return new PreparedStatementWrapper(statement);
     }
 
-    public abstract Connection buildConnection() throws SQLException;
     private class PreparedStatementWrapper {
 
         private final PreparedStatement statement;

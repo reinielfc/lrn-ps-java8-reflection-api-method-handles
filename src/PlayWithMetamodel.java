@@ -7,7 +7,7 @@ import java.util.List;
 
 public class PlayWithMetamodel {
     public static void main(String[] args) {
-        Metamodel<Person> metamodel = Metamodel.of(Person.class);
+        Metamodel metamodel = Metamodel.of(Person.class);
         PrimaryKeyField primaryKeyField = metamodel.getPrimaryKey();
         List<ColumnField> columnFields = metamodel.getColumns();
 
